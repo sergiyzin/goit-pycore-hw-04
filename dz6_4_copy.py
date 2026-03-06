@@ -10,8 +10,6 @@ def parse_input(user_input):
 
 def add_contact(args, contacts):
     """add name phone -> додаємо новий контакт."""
-    if len(args) != 2:
-        return "Usage: add username phone"
     name, phone = args
     contacts[name] = phone
     return "Contact added."
@@ -19,8 +17,6 @@ def add_contact(args, contacts):
 
 def change_contact(args, contacts):
     """change name phone -> змінюємо номер, якщо контакт є."""
-    if len(args) != 2:
-        return "Usage: change username phone"
     name, phone = args
     if name in contacts:
         contacts[name] = phone
@@ -31,8 +27,6 @@ def change_contact(args, contacts):
 
 def show_phone(args, contacts):
     """phone name -> показуємо номер контакту."""
-    if len(args) != 1:
-        return "Usage: phone username"
     name = args[0]
     if name in contacts:
         return contacts[name]
@@ -66,13 +60,25 @@ def main():
             print("How can I help you?")
 
         elif command == "add":
-            print(add_contact(args, contacts))
+            # очікуємо: add name phone
+            if len(args) != 2:
+                print("Usage: add username phone")
+            else:
+                print(add_contact(args, contacts))
 
         elif command == "change":
-            print(change_contact(args, contacts))
+            # очікуємо: change name phone
+            if len(args) != 2:
+                print("Usage: change username phone")
+            else:
+                print(change_contact(args, contacts))
 
         elif command == "phone":
-            print(show_phone(args, contacts))
+            # очікуємо: phone name користувача
+            if len(args) != 1:
+                print("Usage: phone username")
+            else:
+                print(show_phone(args, contacts))
 
         elif command == "all":
             print(show_all(contacts))
