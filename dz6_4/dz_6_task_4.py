@@ -1,5 +1,5 @@
 def parse_input(user_input):
-    """Розбираємо рядок на команду та аргументи."""
+    #Розбираємо рядок на команду та потрібні нам аргументи
     parts = user_input.split()
     if not parts:
         return "", []
@@ -9,7 +9,7 @@ def parse_input(user_input):
 
 
 def add_contact(args, contacts):
-    """add name phone -> додаємо новий контакт."""
+    #add name phone - додаємо новий контакт
     if len(args) != 2:
         return "Usage: add username phone"
     name, phone = args
@@ -18,7 +18,7 @@ def add_contact(args, contacts):
 
 
 def change_contact(args, contacts):
-    """change name phone -> змінюємо номер, якщо контакт є."""
+    #change name phone - змінюємо номер при умові, якщо є контакт
     if len(args) != 2:
         return "Usage: change username phone"
     name, phone = args
@@ -30,7 +30,7 @@ def change_contact(args, contacts):
 
 
 def show_phone(args, contacts):
-    """phone name -> показуємо номер контакту."""
+    #phone name - відображаємо номер контакту
     if len(args) != 1:
         return "Usage: phone username"
     name = args[0]
@@ -41,7 +41,7 @@ def show_phone(args, contacts):
 
 
 def show_all(contacts):
-    """all -> показуємо всі контакти."""
+    #all - показуємо всі контакти
     if not contacts:
         return "No contacts."
     lines = []
